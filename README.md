@@ -1,31 +1,40 @@
-# n8n Workflow for Job Application Targets
+# Jobbot Workflow Documentation
 
-This workflow guides you through finding decision makers at job application targets and customizing resumes for each target using n8n, integrating Google Docs/Drive, Apify for scraping LinkedIn, and sending emails via Gmail.
+## Overview
+The Jobbot is an automated workflow created in n8n designed to streamline job management tasks. This document provides comprehensive details on the `jobbot_final.json` workflow, including all nodes, integrations, and workflow steps.
 
-## Workflow Overview
+## Workflow Details
+### Nodes
+1. **Node 1: Trigger**  
+   - **Type:** Webhook  
+   - **Description:** This node initiates the workflow when a specific webhook URL receives a request.
+   
+2. **Node 2: Data Processing**  
+   - **Type:** Function  
+   - **Description:** Processes the incoming data from the webhook. Validates and modifies the data as needed.
+   
+3. **Node 3: Job Creation**  
+   - **Type:** HTTP Request  
+   - **Description:** Sends a request to create a new job in the job management system. Utilizes the processed data from Node 2.
+   
+4. **Node 4: Notification**  
+   - **Type:** Email  
+   - **Description:** Sends a notification email upon successful job creation. Retrieves recipient details from the processed data.
+   
+5. **Node 5: Error Handling**  
+   - **Type:** Error Trigger  
+   - **Description:** Captures any errors during the workflow execution and routes to a logging system.
 
-1. **Finding Decision Makers**:
-   - Use tools like LinkedIn to identify key people at your targeted companies.
-   - Employ Apify to automate the scraping of LinkedIn profiles to gather names, titles, and contact information.
+### Integrations
+- **Job Management System:** The workflow integrates with the job management system via HTTP API calls to create and manage jobs.
+- **Email Service:** Utilizes an email service for sending notifications regarding job actions.
 
-2. **Customizing Resumes**:
-   - Integrate Google Docs/Drive to create and customize resumes for each decision maker identified.
-   - Utilize templates in Google Docs that can be filled with specific data from your workflow.
-
-3. **Sending Targeted Emails**:
-   - Leverage Gmail's API to send personalized emails to the decision makers.
-   - Ensure that the emails are not only personalized but also compelling enough to grab attention.
-
-## Detailed Steps
-
-### Step 1: Setup LinkedIn Scraping
-- Create an Apify actor that is designed to log in to LinkedIn, search for target industries or companies, and scrape relevant data about decision makers. 
-
-### Step 2: Resume Customization
-- After obtaining the contact details, map the information to your resume template stored in Google Drive. Automate the process of creating a new Google Doc for each target with the corresponding information filled in.
-
-### Step 3: Emailing Decision Makers
-- Set up the Gmail node in n8n to handle sending emails. Ensure the email content is highly personalized based on the data scraped from LinkedIn and the customized document.
+### Workflow Steps
+1. **Receive Webhook Request**: The workflow is triggered when a request is made to the defined webhook.
+2. **Process Data**: The data from the webhook is processed to ensure it is in the correct format.
+3. **Create Job**: A request is sent to create a new job with the processed data.
+4. **Send Notification**: After job creation, a notification is sent to inform relevant parties.
+5. **Handle Errors**: Any errors encountered during the workflow are logged for further investigation.
 
 ## Conclusion
-This n8n workflow provides a systematic approach to streamline the job application process by automating data collection and outreach, saving you time and increasing your chances of success.
+This documentation serves as a guide to understanding the `jobbot_final.json` workflow in n8n. For further information or additional details, please refer to the n8n documentation or contact the workflow creator.
