@@ -37,4 +37,4 @@ The Jobbot is an automated workflow created in n8n designed to streamline job ma
 5. **Handle Errors**: Any errors encountered during the workflow are logged for further investigation.
 
 ## Conclusion
-This documentation serves as a guide to understanding the `jobbot_final.json` workflow in n8n. For further information or additional details, please refer to the n8n documentation or contact the workflow creator.
+This documentation serves as a guide to understanding the `jobbot_final.json` workflow in n8n. For further information or additional details, please refer to the n8n documentation or contact the workflow creator :)me).
